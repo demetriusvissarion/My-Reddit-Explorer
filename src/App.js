@@ -1,6 +1,6 @@
-import { Header } from "./components/header/Header";
-import { Body } from "./components/body/Body";
-import { Footer } from "./components/footer/Footer";
+import { Header } from "./components/Header";
+import { Body } from "./components/Body";
+import { Footer } from "./components/Footer";
 import "./App.css";
 
 function App() {
@@ -12,3 +12,5 @@ function App() {
     </div>
   );
 }
+
+export default App;
