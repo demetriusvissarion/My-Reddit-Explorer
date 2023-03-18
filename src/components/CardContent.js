@@ -10,7 +10,7 @@ export const CardContent = () => {
         AMC Theaters to Change Movie Ticket Prices Based on Seat Location
       </p>
       <div className="ImageContainer">
-        <img src={bigExplorer} id="image" />
+        <img src={bigExplorer} id="image" alt="Big Explorer" />
       </div>
     </div>
   );
