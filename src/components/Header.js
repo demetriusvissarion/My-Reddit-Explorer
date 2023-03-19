@@ -7,6 +7,7 @@ import { useState } from "react";
 
 export const Header = () => {
   const [searchBarDisplay, setSearchBarDisplay] = useState(false);
+  const [inputValue, setInputValue] = useState("");
 
   return (
     <div className="Header">
@@ -17,11 +18,11 @@ export const Header = () => {
         alt="Refresh Icon"
       />
       {searchBarDisplay ? (
-        <SearchBar />
+        <SearchBar value={inputValue} setInputValue={setInputValue} />
       ) : (
         <div>
           <img src={Explorer} id="explorerIcon" alt="Explorer Icon" />
-          <p id="title">MiDDiT</p>
+          <p id="title">My Redit Explorer</p>
         </div>
       )}
       <img
