@@ -1,16 +1,12 @@
-import bigExplorer from "../img/bigExplorer.webp";
-
-export const CardContent = () => {
+export const CardContent = ({ cardId, channel, title, image }) => {
   return (
     <div className="CardContent">
-      <p className="Channel">
-        r/interestingasfuck •Posted by u/JarethKingofGoblins
-      </p>
+      <p className="Channel">{channel}</p>
       <p className="Title">
-        AMC Theaters to Change Movie Ticket Prices Based on Seat Location
+        Card {cardId}: {title}
       </p>
       <div className="ImageContainer">
-        <img src={bigExplorer} id="image" alt="Big Explorer" />
+        <img src={image} id="image" alt="article img content" />
       </div>
     </div>
   );
