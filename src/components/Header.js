@@ -4,7 +4,7 @@ import Refresh from "../img/Refresh.svg";
 import { SearchBar } from "./SearchBar";
 import "./Header.css";
 import { useState } from "react";
-import { setNewCards } from "../cards/cardsSlice";
+import { setNewCards } from "../store/cardsSlice";
 import { useDispatch } from "react-redux";
 
 export const Header = () => {
