@@ -4,16 +4,19 @@ import Refresh from "../img/Refresh.svg";
 import { SearchBar } from "./SearchBar";
 import "./Header.css";
 import { useState } from "react";
+import { setNewCards } from "../cards/cardsSlice";
+import { useDispatch } from "react-redux";
 
 export const Header = () => {
   const [searchBarDisplay, setSearchBarDisplay] = useState(false);
   const [inputValue, setInputValue] = useState("");
+  const dispatch = useDispatch();
 
   return (
     <div className="Header">
       <img
         src={Refresh}
-        onClick={() => window.location.reload(false)}
+        onClick={() => dispatch(setNewCards())}
         id="refreshIcon"
         alt="Refresh Icon"
       />

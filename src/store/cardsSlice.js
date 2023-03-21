@@ -1,8 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import bigExplorer from "../img/bigExplorer.webp";
 
-const randomNumber = Math.ceil(Math.random() * 9 + 1);
-const initialCards = {};
+const randomNumber = () => Math.ceil(Math.random() * 9 + 1);
 
 const generateCard = (id) => ({
   id: id,
@@ -15,14 +14,19 @@ const generateCard = (id) => ({
   voteNumber: 3200,
 });
 
-for (let step = 1; step < randomNumber; step++) {
-  const newCard = generateCard(step);
-  initialCards[newCard.id] = newCard;
-}
+const initialCards = () => {
+  const cards = {};
+  const count = randomNumber();
+  for (let step = 1; step < count; step++) {
+    const newCard = generateCard(step);
+    cards[newCard.id] = newCard;
+  }
+  return cards;
+};
 
 export const cardsSlice = createSlice({
   name: "cards",
-  initialState: initialCards,
+  initialState: initialCards(),
   reducers: {
     setDisplayFalse: (state, action) => {
       state[action.payload].display = false;
@@ -30,8 +34,13 @@ export const cardsSlice = createSlice({
     setAnimationHide: (state, action) => {
       state[action.payload].animation = "hide";
     },
+    setNewCards: (state) => {
+      Object.keys(state).forEach((key) => delete state[key]);
+      Object.assign(state, initialCards());
+    },
   },
 });
 
 export const selectAllCards = (state) => state.cards;
-export const { setAnimationHide, setDisplayFalse } = cardsSlice.actions;
+export const { setAnimationHide, setDisplayFalse, setNewCards } =
+  cardsSlice.actions;

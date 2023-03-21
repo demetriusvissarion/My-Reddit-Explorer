@@ -11,6 +11,7 @@ export const Card = ({ card }) => {
         channel={card.channel}
         title={card.title}
         image={card.image}
+        cardId={card.id}
       />
       <CardFunction commentNumber={card.commentNumber} cardId={card.id} />
     </div>
