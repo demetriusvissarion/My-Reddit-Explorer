@@ -3,12 +3,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { Card } from ".//Card";
 import { selectAllCards } from "../store/cardsSlice";
 import { fetchRedditData } from "../store/cardsSlice";
-import { selectInputValue } from "../store/searchSlice";
+import { selectInputValue, selectScreenHeight } from "../store/searchSlice";
 import "./Cards.css";
 
 export const Cards = () => {
   const cards = useSelector(selectAllCards);
   const inputValue = useSelector(selectInputValue);
+  const displayHeight = useSelector(selectScreenHeight);
   const dispatch = useDispatch();
 
   const cardToDisplay = () => {
@@ -33,7 +34,11 @@ export const Cards = () => {
     );
   } else {
     return (
-      <div id="loading">
+      <div
+        id="loading"
+        className="Cards"
+        style={{ height: displayHeight - 144 }}
+      >
         <p>Loading...</p>
       </div>
     );
