@@ -1,19 +1,17 @@
 import { Vote } from "./Vote";
 import { CardFunction } from "./CardFunction";
 import { CardContent } from "./CardContent";
+import { useSelector } from "react-redux";
 import "./Card.css";
 
-export const Card = ({ card }) => {
+export const Card = ({ cardId }) => {
+  const card = useSelector((state) => state.cards.cards[cardId]);
+
   return (
     <div className={`Card ${card.animation}`}>
-      <Vote voteNumber={card.voteNumber} />
-      <CardContent
-        channel={card.channel}
-        title={card.title}
-        image={card.image}
-        cardId={card.id}
-      />
-      <CardFunction commentNumber={card.commentNumber} cardId={card.id} />
+      <Vote cardId={cardId} />
+      <CardContent cardId={card.id} />
+      <CardFunction cardId={card.id} />
     </div>
   );
 };
