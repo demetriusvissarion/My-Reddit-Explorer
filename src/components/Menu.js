@@ -1,6 +1,10 @@
 import "./Menu.css";
 import { useDispatch, useSelector } from "react-redux";
-import { selectMenuDisplay } from "../store/searchSlice";
+import {
+  selectMenuDisplay,
+  setMenuDisplay,
+  selectScreenWidth,
+} from "../store/searchSlice";
 import { v4 as uuidv4 } from "uuid";
 import { fetchRedditData } from "../store/cardsSlice";
 
@@ -18,6 +22,7 @@ export const Menu = () => {
   const menuDisplay = useSelector(selectMenuDisplay);
   const menuList = initialMenuList;
   const dispatch = useDispatch();
+  const screenWidth = useSelector(selectScreenWidth);
 
   return (
     <div id="slider" className={`Menu ${menuAnimation(menuDisplay)}`}>
@@ -29,6 +34,9 @@ export const Menu = () => {
             key={uuidv4()}
             onClick={() => {
               dispatch(fetchRedditData(topic));
+              if (screenWidth <= 1000) {
+                dispatch(setMenuDisplay());
+              }
             }}
           >
             /r/{topic}
