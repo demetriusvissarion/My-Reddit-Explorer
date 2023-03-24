@@ -5,6 +5,10 @@
   top: 0px;
   background: #ffffff;
   z-index: 10000;
+  box-sizing: border-box;
+  border-bottom: solid #3d87f7;
+  border-right: solid #3d87f7;
+  border-width: 2px;
 }
 #title {
   position: absolute;

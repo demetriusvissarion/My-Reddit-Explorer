@@ -12,7 +12,7 @@ const menuAnimation = (menuDisplay) => {
   }
 };
 
-const initialMenuList = ["popular", "funny", "HumansBeingBros"];
+const initialMenuList = ["popular", "funny", "CasualUK"];
 
 export const Menu = () => {
   const menuDisplay = useSelector(selectMenuDisplay);
