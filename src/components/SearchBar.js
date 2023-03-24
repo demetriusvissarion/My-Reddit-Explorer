@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import Clear from "../img/Clear.svg";
+import { fetchRedditData } from "../store/cardsSlice";
 import "./SearchBar.css";
 import {
   clearSearchBar,
@@ -17,11 +18,17 @@ export const SearchBar = () => {
 
   const handleClear = (e) => {
     dispatch(clearSearchBar());
+    dispatch(fetchRedditData(inputValue));
   };
 
   return (
     <div id="searchBar">
-      <input id="searchInput" value={inputValue} onChange={handleInputValue} />
+      <input
+        id="searchInput"
+        placeholder="subreddit"
+        value={inputValue}
+        onChange={handleInputValue}
+      />
       <img src={Clear} id="clearIcon" onClick={handleClear} alt="Clear Icon" />
     </div>
   );
