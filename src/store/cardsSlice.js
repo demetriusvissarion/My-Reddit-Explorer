@@ -1,10 +1,10 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-export const fetchRedditPopular = createAsyncThunk(
+export const fetchRedditData = createAsyncThunk(
   "cards/fetchRedditPopular",
-  async () => {
+  async (channel = "home", thunkAPI) => {
     const responseJson = await fetch(
-      "https://www.reddit.com/r/popular.json"
+      `https://www.reddit.com/r/${channel}.json`
     ).then((response) => response.json());
 
     const elements = responseJson.data.children;
@@ -51,16 +51,16 @@ export const cardsSlice = createSlice({
     },
   },
   extraReducers: {
-    [fetchRedditPopular.pending]: (state, action) => {
+    [fetchRedditData.pending]: (state, action) => {
       state.isLoading = true;
       state.hasError = false;
     },
-    [fetchRedditPopular.fulfilled]: (state, action) => {
+    [fetchRedditData.fulfilled]: (state, action) => {
       state.cards = action.payload;
       state.isLoading = false;
       state.hasError = false;
     },
-    [fetchRedditPopular.rejected]: (state, action) => {
+    [fetchRedditData.rejected]: (state, action) => {
       state.isLoading = false;
       state.hasError = true;
     },

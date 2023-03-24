@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Card } from ".//Card";
 import { selectAllCards } from "../store/cardsSlice";
-import { fetchRedditPopular } from "../store/cardsSlice";
+import { fetchRedditData } from "../store/cardsSlice";
 import { selectInputValue } from "../store/searchSlice";
 import "./Cards.css";
 
@@ -20,7 +20,7 @@ export const Cards = () => {
   };
 
   useEffect(() => {
-    dispatch(fetchRedditPopular());
+    dispatch(fetchRedditData());
   }, [dispatch]);
 
   if (Object.keys(cards).length !== 0) {

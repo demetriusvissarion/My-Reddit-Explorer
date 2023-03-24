@@ -1,7 +1,7 @@
 .Card {
   position: relative;
   height: auto;
-  margin: 24px calc(50% - 320px) 0 calc(50% - 320x);
+  margin: 24px calc(50% - 360px) 0 calc(50% - 360x);
   background: #b9a3a3f1;
   border-radius: 24px;
 }
@@ -131,7 +131,7 @@ a:link {
 }
 a:hover {
   text-decoration: none;
-  background: #a59393;
+  background: #302e2e;
   border-radius: 4px;
 }
 a::after {
@@ -141,7 +141,7 @@ a::after {
 .CardFunction {
   position: relative;
   height: 24px;
-  width: calc(100% - 96px);
+  max-width: calc(100% - 96px);
   left: 72px;
   margin: 18px 0;
   color: #000000;
@@ -187,6 +187,15 @@ a::after {
   }
   .CardContent {
     margin-top: 8px;
+    left: 60px;
+    max-width: calc(100% - 84px);
+  }
+  .Vote {
+    left: 12px;
+  }
+  .DownIcon,
+  .UpIcon {
+    left: 18px;
   }
   .MediaContainer {
     margin-top: 0;
@@ -205,5 +214,11 @@ a::after {
   }
   .MediaContainer #link {
     font-size: 15px;
+  }
+  .CardFunction {
+    margin-top: 4px;
+    margin-bottom: 6px;
+    left: 60px;
+    max-width: calc(100% - 84px);
   }
 }

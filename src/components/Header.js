@@ -4,7 +4,7 @@ import Refresh from "../img/Refresh.svg";
 import { SearchBar } from "./SearchBar";
 import "./Header.css";
 
-import { clearCards, fetchRedditPopular } from "../store/cardsSlice";
+import { clearCards, fetchRedditData } from "../store/cardsSlice";
 import { useDispatch, useSelector } from "react-redux";
 import {
   selectSearchBarDisplay,
@@ -18,7 +18,7 @@ export const Header = () => {
 
   const handleRefreshClick = (e) => {
     dispatch(clearCards());
-    dispatch(fetchRedditPopular());
+    dispatch(fetchRedditData());
   };
 
   const handleSearchClick = (e) => {
