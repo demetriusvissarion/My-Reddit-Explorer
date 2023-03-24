@@ -3,18 +3,26 @@ import Explorer from "../img/Explorer.jpeg";
 import Refresh from "../img/Refresh.svg";
 import { SearchBar } from "./SearchBar";
 import "./Header.css";
-import { useState } from "react";
+
 import { clearCards, fetchRedditPopular } from "../store/cardsSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  selectSearchBarDisplay,
+  setSearchBarDisplay,
+} from "../store/searchSlice";
 
 export const Header = () => {
-  const [searchBarDisplay, setSearchBarDisplay] = useState(false);
-  const [inputValue, setInputValue] = useState("");
+  const searchBarDisplay = useSelector(selectSearchBarDisplay);
+
   const dispatch = useDispatch();
 
   const handleRefreshClick = (e) => {
     dispatch(clearCards());
     dispatch(fetchRedditPopular());
+  };
+
+  const handleSearchClick = (e) => {
+    dispatch(setSearchBarDisplay());
   };
 
   return (
@@ -26,16 +34,16 @@ export const Header = () => {
         alt="Refresh Icon"
       />
       {searchBarDisplay ? (
-        <SearchBar value={inputValue} setInputValue={setInputValue} />
+        <SearchBar />
       ) : (
         <div>
           <img src={Explorer} id="explorerIcon" alt="Explorer Icon" />
-          <p id="title">My Redit Explorer</p>
+          <p id="title">MiDDiT</p>
         </div>
       )}
       <img
         src={Search}
-        onClick={() => setSearchBarDisplay(!searchBarDisplay)}
+        onClick={handleSearchClick}
         id="searchIcon"
         alt="Search Icon"
       />

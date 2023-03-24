@@ -6,10 +6,12 @@ import reportWebVitals from "./reportWebVitals";
 import { configureStore } from "@reduxjs/toolkit";
 import { cardsSlice } from "./store/cardsSlice";
 import { Provider } from "react-redux";
+import { searchSlice } from "./store/searchSlice";
 
 const store = configureStore({
   reducer: {
     cards: cardsSlice.reducer,
+    search: searchSlice.reducer,
   },
 });
 

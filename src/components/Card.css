@@ -2,7 +2,7 @@
   position: relative;
   height: auto;
   margin: 24px 24px 0 24px;
-  background: #ffffff;
+  background: #b9a3a3f1;
   border-radius: 24px;
 }
 .Card.hide {
@@ -50,7 +50,7 @@
   margin: 0;
   font-family: "Inter";
   font-style: normal;
-  font-weight: bold;
+  font-weight: 500;
   font-size: 15px;
   line-height: 15px;
   display: flex;
@@ -58,18 +58,8 @@
   justify-content: center;
   color: #000000;
 }
-.Channel {
-  position: relative;
-  height: 12px;
-  margin: 0;
-  font-family: "Inter";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 10px;
-  display: flex;
-  align-items: center;
-  color: #505050;
+strong {
+  white-space: break-spaces;
 }
 .Title {
   position: relative;
@@ -115,7 +105,7 @@
   display: flex;
   align-items: right;
   justify-content: right;
-  color: #bebebe;
+  color: #a59393;
 }
 
 .CardFunction {
@@ -135,5 +125,5 @@
 }
 
 #hideIcon:hover {
-  background: #dedede;
+  background: #debebe;
 }
