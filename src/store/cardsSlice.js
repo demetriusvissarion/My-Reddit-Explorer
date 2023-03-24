@@ -29,6 +29,8 @@ export const fetchRedditData = createAsyncThunk(
         isVideo: data.is_video,
         videoLink: data.secure_media,
         permalink: data.permalink,
+        text: data.selftext,
+        thumbnail: data.thumbnail,
       };
     });
     return cardData;
