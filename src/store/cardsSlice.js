@@ -10,17 +10,22 @@ export const fetchRedditPopular = createAsyncThunk(
     const elements = responseJson.data.children;
     const cardData = {};
     elements.map((element) => {
-      const id = element.data.name;
+      const data = element.data;
+      const id = data.id;
       cardData[id] = {
         id: id,
         display: true,
         animation: "display",
-        channel: element.data.subreddit_name_prefixed,
-        authorName: element.data.author,
-        title: element.data.title,
-        commentNumber: element.data.num_comments,
-        voteNumber: element.data.ups,
-        image: element.data.url_overridden_by_dest,
+        channel: data.subreddit_name_prefixed,
+        authorName: data.author,
+        title: data.title,
+        commentNumber: data.num_comments,
+        voteNumber: data.ups,
+        contentLink: data.url_overridden_by_dest,
+        postHint: data.post_hint,
+        isVideo: data.is_video,
+        videoLink: data.secure_media,
+        permalink: data.permalink,
       };
     });
     return cardData;
@@ -41,6 +46,9 @@ export const cardsSlice = createSlice({
     setAnimationHide: (state, action) => {
       state.cards[action.payload].animation = "hide";
     },
+    clearCards: (state, action) => {
+      state.cards = {};
+    },
   },
   extraReducers: {
     [fetchRedditPopular.pending]: (state, action) => {
@@ -60,5 +68,5 @@ export const cardsSlice = createSlice({
 });
 
 export const selectAllCards = (state) => state.cards.cards;
-export const { setAnimationHide, setDisplayFalse, setNewCards } =
+export const { setAnimationHide, setDisplayFalse, clearCards } =
   cardsSlice.actions;

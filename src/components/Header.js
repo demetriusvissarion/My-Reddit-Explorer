@@ -4,7 +4,7 @@ import Refresh from "../img/Refresh.svg";
 import { SearchBar } from "./SearchBar";
 import "./Header.css";
 import { useState } from "react";
-import { fetchRedditPopular } from "../store/cardsSlice";
+import { clearCards, fetchRedditPopular } from "../store/cardsSlice";
 import { useDispatch } from "react-redux";
 
 export const Header = () => {
@@ -12,11 +12,16 @@ export const Header = () => {
   const [inputValue, setInputValue] = useState("");
   const dispatch = useDispatch();
 
+  const handleRefreshClick = (e) => {
+    dispatch(clearCards());
+    dispatch(fetchRedditPopular());
+  };
+
   return (
     <div className="Header">
       <img
         src={Refresh}
-        onClick={() => dispatch(fetchRedditPopular())}
+        onClick={handleRefreshClick}
         id="refreshIcon"
         alt="Refresh Icon"
       />
