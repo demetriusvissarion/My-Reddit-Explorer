@@ -9,10 +9,10 @@ export const fetchRedditPopular = createAsyncThunk(
 
     const elements = responseJson.data.children;
     const cardData = {};
-    elements.map((element) => {
+    elements.forEach((element) => {
       const data = element.data;
       const id = data.id;
-      return (cardData[id] = {
+      cardData[id] = {
         id: id,
         display: true,
         animation: "display",
@@ -26,7 +26,7 @@ export const fetchRedditPopular = createAsyncThunk(
         isVideo: data.is_video,
         videoLink: data.secure_media,
         permalink: data.permalink,
-      });
+      };
     });
     return cardData;
   }
