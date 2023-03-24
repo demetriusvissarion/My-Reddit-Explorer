@@ -1,16 +1,23 @@
 import { Card } from ".//Card";
 import "./Cards.css";
 import { selectAllCards } from "../store/cardsSlice";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { fetchRedditPopular } from "../store/cardsSlice";
 
 export const Cards = () => {
   const cards = useSelector(selectAllCards);
+  const dispatch = useDispatch();
 
   const cardToDisplay = () => {
     return Object.values(cards).filter((card) => card.display);
   };
 
-  if (cards) {
+  useEffect(() => {
+    dispatch(fetchRedditPopular());
+  }, [dispatch]);
+
+  if (Object.keys(cards).length !== 0) {
     return (
       <div className="Cards">
         {cardToDisplay().map((card) => (
@@ -21,8 +28,8 @@ export const Cards = () => {
   } else {
     console.log(cards);
     return (
-      <div className="Cards">
-        <p>No Contents</p>
+      <div id="loading">
+        <p>Loading...</p>
       </div>
     );
   }
