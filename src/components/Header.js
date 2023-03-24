@@ -38,7 +38,7 @@ export const Header = () => {
       ) : (
         <div>
           <img src={Explorer} id="explorerIcon" alt="Explorer Icon" />
-          <p id="title">MiDDiT</p>
+          <p id="title">MyReddit Explorer</p>
         </div>
       )}
       <img
