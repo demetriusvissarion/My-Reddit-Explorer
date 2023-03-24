@@ -22,6 +22,7 @@ export const CardContent = ({ cardId }) => {
         return (
           <p id="link">
             <a href={card.contentLink} target="_blank" rel="noreferrer">
+              {`>>`}
               Source Link
             </a>
           </p>
