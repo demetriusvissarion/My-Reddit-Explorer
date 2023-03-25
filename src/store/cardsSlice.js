@@ -65,13 +65,14 @@ export const cardsSlice = createSlice({
       state.isLoading = false;
       state.hasError = false;
     },
-    [fetchRedditData.rejected]: (state, action) => {
-      state.isLoading = false;
-      state.hasError = true;
-    },
   },
 });
 
 export const selectAllCards = (state) => state.cards.cards;
-export const { setAnimationHide, setDisplayFalse, clearCards } =
-  cardsSlice.actions;
+export const {
+  setAnimationHide,
+  setDisplayFalse,
+  setTextDisplay,
+  setDisplayCardsId,
+  clearCards,
+} = cardsSlice.actions;

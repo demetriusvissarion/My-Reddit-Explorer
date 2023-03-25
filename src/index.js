@@ -7,11 +7,13 @@ import { configureStore } from "@reduxjs/toolkit";
 import { cardsSlice } from "./store/cardsSlice";
 import { Provider } from "react-redux";
 import { searchSlice } from "./store/searchSlice";
+import { commentsSlice } from "./store/commentsSlice";
 
 const store = configureStore({
   reducer: {
     cards: cardsSlice.reducer,
     search: searchSlice.reducer,
+    comments: commentsSlice.reducer,
   },
 });
 

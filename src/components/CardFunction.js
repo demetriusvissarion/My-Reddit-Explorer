@@ -4,6 +4,7 @@ import Hide from "../img/Hide.svg";
 import { setAnimationHide, setDisplayFalse } from "../store/cardsSlice";
 import { useSelector } from "react-redux";
 import { nFormatter } from "../util/numberTransform";
+import { fetchRedditComments } from "../store/commentsSlice";
 
 const sleep = (ms = 500) => new Promise((resolve) => setTimeout(resolve, ms));
 
@@ -19,9 +20,20 @@ export const CardFunction = ({ cardId }) => {
 
   return (
     <div className="CardFunction">
-      <img src={Comment} id="commentIcon" alt="Comment Icon" />
-      <p className="Comment">{nFormatter(card.commentNumber, 1)} comments</p>
-      <img src={Hide} onClick={handleClick} id="hideIcon" alt="Hide Icon" />
+      <img
+        src={Comment}
+        alt="comment"
+        id="commentIcon"
+        onClick={() =>
+          dispatch(
+            fetchRedditComments({ cardId: cardId, permalink: card.permalink })
+          )
+        }
+      />
+      <p className="CommentNumber">
+        {nFormatter(card.commentNumber, 1)} comments
+      </p>
+      <img src={Hide} alt="hide" onClick={handleClick} id="hideIcon" />
     </div>
   );
 };

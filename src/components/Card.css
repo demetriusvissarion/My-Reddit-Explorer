@@ -1,13 +1,14 @@
 .Card {
   position: relative;
   box-sizing: border-box;
-  border-bottom: solid #3d87f7;
-  border-right: solid #3d87f7;
+  border-bottom: solid #f7533d;
+  border-right: solid #f7533d;
   border-width: 2px;
   height: auto;
-  margin: 24px calc(50% - 360px) 0 calc(50% - 360x);
-  background: #b9a3a3f1;
+  margin: 24px calc(50% - 360px) 0 calc(50% - 360px);
+  background: #ffffff;
   border-radius: 24px;
+  min-height: 120px;
 }
 .Card.hide {
   animation: bounce-out 0.5s ease-in;
@@ -44,7 +45,6 @@
   margin-top: 24px;
   margin-bottom: 0;
 }
-
 .Vote {
   position: absolute;
   width: 36px;
@@ -54,7 +54,7 @@
   margin: 0;
   font-family: "Inter";
   font-style: normal;
-  font-weight: 500;
+  font-weight: 400;
   font-size: 15px;
   line-height: 15px;
   display: flex;
@@ -62,7 +62,6 @@
   justify-content: center;
   color: #000000;
 }
-
 .Channel {
   position: relative;
   height: 12px;
@@ -76,11 +75,9 @@
   align-items: center;
   color: #505050;
 }
-
 strong {
   white-space: break-spaces;
 }
-
 .Title {
   position: relative;
   height: auto;
@@ -92,9 +89,10 @@ strong {
   line-height: 24px;
   display: flex;
   align-items: center;
+  word-wrap: break-word;
+  word-break: break-all;
   color: #000000;
 }
-
 .MediaContainer {
   position: relative;
   max-width: 100%;
@@ -102,7 +100,6 @@ strong {
   height: auto;
   margin-top: 16px;
 }
-
 .MediaContainer #image {
   position: relative;
   max-width: 100%;
@@ -110,7 +107,6 @@ strong {
   height: auto;
   object-fit: cover;
 }
-
 .MediaContainer #video {
   position: relative;
   max-width: 100%;
@@ -118,7 +114,6 @@ strong {
   height: auto;
   object-fit: cover;
 }
-
 .MediaContainer #link {
   font-family: "Inter";
   font-style: normal;
@@ -129,7 +124,36 @@ strong {
   display: flex;
   align-items: right;
   justify-content: right;
-  color: #a59393;
+  color: #bebebe;
+}
+.cardIntroMarkdown p {
+  font-size: 18px;
+  margin: 12px 0 0 0;
+  font-family: Söhne, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto,
+    Ubuntu, Cantarell, Noto Sans, sans-serif, Helvetica Neue, Arial,
+    Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+  word-wrap: break-word;
+  word-break: break-all;
+}
+p.readMore {
+  position: relative;
+  display: block;
+  margin: 4px 0 0 auto;
+  font-size: 18px;
+  padding: 4px;
+  color: #ffffff;
+  font-weight: bold;
+  text-align: center;
+  width: fit-content;
+  border-radius: 6px;
+  background-color: #f7533d;
+  border: solid 2px #f7533d;
+}
+
+p.readMore:hover {
+  color: #a3a3a3;
+  border: solid 2px #f7533d;
+  background-color: #ffffff;
 }
 
 a:link {
@@ -138,13 +162,12 @@ a:link {
 }
 a:hover {
   text-decoration: none;
-  background: #302e2e;
+  background: #dedede;
   border-radius: 4px;
 }
 a::after {
   text-decoration: none;
 }
-
 .CardFunction {
   position: relative;
   height: 24px;
@@ -153,14 +176,18 @@ a::after {
   margin: 18px 0;
   color: #000000;
 }
-
 #commentIcon {
   position: absolute;
   width: 24px;
   height: 24px;
+  border-radius: 4px;
 }
 
-.Comment {
+#commentIcon:hover {
+  background: #dedede;
+}
+
+.CommentNumber {
   position: absolute;
   height: 24px;
   left: 36px;
@@ -175,7 +202,6 @@ a::after {
   vertical-align: center;
   color: #606060;
 }
-
 #hideIcon {
   position: absolute;
   width: 24px;
@@ -183,11 +209,9 @@ a::after {
   right: 0px;
   border-radius: 4px;
 }
-
 #hideIcon:hover {
   background: #dedede;
 }
-
 @media only screen and (max-width: 768px) {
   .Card {
     margin: 24px 24px 0 24px;
@@ -231,5 +255,18 @@ a::after {
     margin-bottom: 6px;
     left: 60px;
     max-width: calc(100% - 84px);
+  }
+  .Comment {
+    margin-top: 4px;
+    margin-bottom: 6px;
+    left: 60px;
+    max-width: calc(100% - 84px);
+  }
+  .cardIntroMarkdown p {
+    font-size: 15px;
+  }
+  p.readMore {
+    font-size: 10px;
+    padding: 2px;
   }
 }

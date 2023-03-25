@@ -6,7 +6,7 @@ import {
   selectScreenWidth,
 } from "../store/searchSlice";
 import { v4 as uuidv4 } from "uuid";
-import { fetchRedditData } from "../store/cardsSlice";
+import { clearCards, fetchRedditData } from "../store/cardsSlice";
 
 const menuAnimation = (menuDisplay) => {
   if (menuDisplay) {
@@ -33,8 +33,9 @@ export const Menu = () => {
             id="topic"
             key={uuidv4()}
             onClick={() => {
+              dispatch(clearCards());
               dispatch(fetchRedditData(topic));
-              window.scrollTo(0, 0);
+              window.scrollTo({ top: 0, behavior: "smooth" });
               if (screenWidth <= 1000) {
                 dispatch(setMenuDisplay());
               }
