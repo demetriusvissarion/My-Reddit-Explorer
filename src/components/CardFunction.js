@@ -1,12 +1,14 @@
 import { useDispatch } from "react-redux";
 import Comment from "../img/Comment.svg";
 import Hide from "../img/Hide.svg";
-import { setAnimationHide, setDisplayFalse } from "../store/cardsSlice";
+import {
+  setAnimationHide,
+  setDisplayFalse,
+  fetchRedditComments,
+} from "../store/cardsSlice";
 import { useSelector } from "react-redux";
 import { nFormatter } from "../util/numberTransform";
-import { fetchRedditComments } from "../store/commentsSlice";
-
-const sleep = (ms = 500) => new Promise((resolve) => setTimeout(resolve, ms));
+import { sleep } from "../util/sleep";
 
 export const CardFunction = ({ cardId }) => {
   const card = useSelector((state) => state.cards.cards[cardId]);
@@ -24,11 +26,7 @@ export const CardFunction = ({ cardId }) => {
         src={Comment}
         alt="comment"
         id="commentIcon"
-        onClick={() =>
-          dispatch(
-            fetchRedditComments({ cardId: cardId, permalink: card.permalink })
-          )
-        }
+        onClick={() => dispatch(fetchRedditComments(cardId))}
       />
       <p className="CommentNumber">
         {nFormatter(card.commentNumber, 1)} comments

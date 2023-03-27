@@ -31,9 +31,28 @@ export const fetchRedditData = createAsyncThunk(
         permalink: data.permalink,
         text: data.selftext,
         thumbnail: data.thumbnail,
+        comments: [],
       };
     });
     return cardData;
+  }
+);
+
+export const fetchRedditComments = createAsyncThunk(
+  "cards/fetchRedditComments",
+  async (cardId, thunkAPI) => {
+    console.log("fetchingComments");
+    const responseJson = await fetch(
+      "https://www.reddit.com" +
+        thunkAPI.getState().cards.cards[cardId].permalink +
+        ".json"
+    ).then((response) => response.json());
+    const comments = responseJson[1].data.children; //[0].data.body => text .author ,is_submitter
+
+    return {
+      id: cardId,
+      comments: comments,
+    };
   }
 );
 
@@ -54,6 +73,9 @@ export const cardsSlice = createSlice({
     clearCards: (state, action) => {
       state.cards = {};
     },
+    clearComments: (state, action) => {
+      state.cards[action.payload].comments = [];
+    },
   },
   extraReducers: {
     [fetchRedditData.pending]: (state, action) => {
@@ -62,6 +84,15 @@ export const cardsSlice = createSlice({
     },
     [fetchRedditData.fulfilled]: (state, action) => {
       state.cards = action.payload;
+      state.isLoading = false;
+      state.hasError = false;
+    },
+    [fetchRedditComments.pending]: (state, action) => {
+      state.isLoading = true;
+      state.hasError = false;
+    },
+    [fetchRedditComments.fulfilled]: (state, action) => {
+      state.cards[action.payload.id].comments = action.payload.comments;
       state.isLoading = false;
       state.hasError = false;
     },
@@ -75,4 +106,5 @@ export const {
   setTextDisplay,
   setDisplayCardsId,
   clearCards,
+  clearComments,
 } = cardsSlice.actions;
