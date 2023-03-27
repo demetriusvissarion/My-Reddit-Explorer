@@ -37,16 +37,16 @@ export const Header = () => {
       {searchBarDisplay ? (
         <SearchBar />
       ) : (
-        <div>
+        <div id="explorerIconContainer">
+          <p onClick={handleRefreshClick} id="title">
+            My Reddit Explorer
+          </p>
           <img
             src={Explorer}
             alt="Explorer"
             onClick={handleRefreshClick}
             id="explorerIcon"
           />
-          <p onClick={handleRefreshClick} id="title">
-            My Reddit Explorer
-          </p>
         </div>
       )}
       <img

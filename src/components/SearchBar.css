@@ -9,7 +9,7 @@
   justify-content: center;
 
   background: #eeeeee;
-  border-radius: 28px;
+  border-radius: 16px;
   animation-name: barAppear;
   animation-duration: 0.5s;
 }
@@ -56,5 +56,5 @@
 }
 
 #clearIcon:hover {
-  background: #ffffffd6;
+  background: #ffffff;
 }
